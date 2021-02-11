@@ -1,4 +1,5 @@
 <?php
+$civilite = [1 => 'Monsieur', 2 => 'Madame'];
 $lines = file("contact.txt");
 ?>
 
@@ -15,6 +16,7 @@ $lines = file("contact.txt");
 <table class="table">
   <thead class="thead-dark">
     <tr>
+      <th scope="col">#</th>
       <th scope="col">Nom</th>
       <th scope="col">Prénom</th>
       <th scope="col">Date de naissance</th>
@@ -22,14 +24,17 @@ $lines = file("contact.txt");
     </tr>
   </thead>
   <tbody>
-
-  <?php foreach($lines as $line): ?>
+  <?php $lineNumber = 0; ?>
+  <?php foreach($lines as $key => $line): ?>
     <?php $detail = explode(';', $line); ?>
+    <?php var_dump($detail); ?>
+    <?php $numberCivilite = (int) $detail[3]; ?>
     <tr>
-      <th><?= $detail[0]; ?></th>
-      <td><?= $detail[1]; ?></td>
-      <td><?= $detail[2]; ?></td>
-      <td><?= $detail[3]; ?></td>
+      <td><?= ++$lineNumber ?></td>
+      <td><?php echo $detail[0] ?></td>
+      <td><?= $detail[1] ?></td>
+      <td><?= $detail[2] ?></td>
+      <td><?= $civilite[$numberCivilite] ??  'N/A'?></td>
     </tr>
 <?php endforeach; ?>
   </tbody>
