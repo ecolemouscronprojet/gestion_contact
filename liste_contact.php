@@ -27,7 +27,6 @@ $lines = file("contact.txt");
   <?php $lineNumber = 0; ?>
   <?php foreach($lines as $key => $line): ?>
     <?php $detail = explode(';', $line); ?>
-    <?php var_dump($detail); ?>
     <?php $numberCivilite = (int) $detail[3]; ?>
     <tr>
       <td><?= ++$lineNumber ?></td>
